@@ -107,7 +107,7 @@ function updateData($table, $data, $where, $json = true)
             echo json_encode(array("status" => "failure"));
         }
     }
-    return $count;
+    return $count; 
 }
 
 function deleteData($table, $where, $json = true)
@@ -225,17 +225,17 @@ function sendFCMv1($title, $message, $topic, $pageid, $pagename) {
 }
 
 function getAccessToken($serviceAccountPath) {
-  
+    // Read service account JSON file
     $serviceAccount = json_decode(file_get_contents($serviceAccountPath), true);
     
- 
+    // Create JWT header
     $header = [
         'alg' => 'RS256',
         'typ' => 'JWT',
         'kid' => $serviceAccount['private_key_id']
     ];
     
- 
+    // Create JWT claim set
     $time = time();
     $claim = [
         'iss' => $serviceAccount['client_email'],
@@ -245,7 +245,7 @@ function getAccessToken($serviceAccountPath) {
         'iat' => $time
     ];
     
-  
+    // Encode JWT
     $headerEncoded = base64url_encode(json_encode($header));
     $claimEncoded = base64url_encode(json_encode($claim));
     $signature = '';
@@ -257,10 +257,10 @@ function getAccessToken($serviceAccountPath) {
     );
     $signatureEncoded = base64url_encode($signature);
     
- 
+    // Create signed JWT
     $jwt = "$headerEncoded.$claimEncoded.$signatureEncoded";
     
-   
+    // Exchange JWT for access token
     $ch = curl_init('https://oauth2.googleapis.com/token');
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
@@ -275,7 +275,7 @@ function getAccessToken($serviceAccountPath) {
     return $response['access_token'];
 }
 
-
+// Helper function for base64url encoding
 function base64url_encode($data) {
     return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
 }

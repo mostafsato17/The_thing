@@ -1,9 +1,12 @@
 <?php
+$to = "satomustafa17@gmail.com";
+$subject = "Test Email";
+$message = "This is a test email.";
+$headers = "From: your_email@example.com";
 
-
-include "connect.php";
-
-sendGCM("HI", "Nigga im new broo", "users", "", "");
-
-echo "TEST";
+if (mail($to, $subject, $message, $headers)) {
+    echo "Email sent successfully.";
+} else {
+    echo "Failed to send email.";
+}
 ?>
