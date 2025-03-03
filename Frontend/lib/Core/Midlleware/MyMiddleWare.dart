@@ -10,7 +10,10 @@ class Mymiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     if (services.shared.getString("step") == "1") {
-      return const RouteSettings(name: AppRoutes.getstart);
+      return const RouteSettings(name: AppRoutes.login);
+    }
+    if (services.shared.getString("step") == "2") {
+      return const RouteSettings(name: AppRoutes.Homepage);
     }
   }
 }

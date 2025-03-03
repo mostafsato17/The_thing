@@ -13,7 +13,7 @@ abstract class SignupController extends GetxController {
 
 class SignupControllertemp extends SignupController {
   late TextEditingController name;
-  late TextEditingController email;
+  late TextEditingController email; 
   late TextEditingController password;
   SignupData signupData = SignupData(Get.find());
   StatutsRequest statutsRequest = StatutsRequest.none;

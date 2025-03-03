@@ -3,7 +3,7 @@ class AppRoutes {
   static const String intro = "/intro";
   static const String signin = "/signin";
   static const String Homepage = "/Homepage";
-  static const String getstart = "/getstart"; 
+  static const String getstart = "/getstart";  
   static const String Finishing = "/Finishing";
   static const String Bookitems = "/Bookitems";
   static const String Homescreen = "/Homescreen";
@@ -18,4 +18,11 @@ class AppRoutes {
   static const String resetpassword = "/resetpassword";
   static const String ShelfTimeorder = "/ShelfTimeorder";
   static const String verifysignupcode = "/verifysignupcode";
+  static const String search = "/search";
+  static const String categories = "/categories";
+  static const String mealplanner = "/mealplanner";
+  static const String setting = "/setting";
+  static const String profile = "/profile";
+  static const String fridge = "/fridge";
+
 }

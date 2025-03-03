@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Services extends GetxController {
   late SharedPreferences shared;
   Future<Services> init() async {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(); 
     shared = await SharedPreferences.getInstance();
     return this;
   }

@@ -1,8 +1,12 @@
+import 'dart:developer';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_first_app/Core/Class/StatusRequest.dart';
 import 'package:my_first_app/Core/Constant/AppRoutes.dart';
 import 'package:my_first_app/Core/Functions/HandilingData.dart';
+import 'package:my_first_app/Core/Services/services.dart';
 import 'package:my_first_app/Data/Datasource/Remote/Login_data.dart';
 import 'package:my_first_app/Data/Datasource/Remote/Signup_data.dart';
 
@@ -18,6 +22,7 @@ class LoginControllertemp extends LoginController {
   LoginData loginData = LoginData(Get.find());
   StatutsRequest statutsRequest = StatutsRequest.none;
   List data = [];
+  Services service = Get.find();
 
   @override
   login() async {
@@ -28,6 +33,10 @@ class LoginControllertemp extends LoginController {
     statutsRequest = Handlingdata(response);
     if (StatutsRequest.success == statutsRequest) {
       if (response["status"] == "success") {
+        service.shared.setString("step", "2");
+        service.shared.setInt("id", response['data']['user_id']);
+        service.shared.setString("username", response['data']['user_name']);
+        service.shared.setString("email", response['data']['user_email']);
         Get.offNamed(AppRoutes.Homepage);
         print("======================= xxx ====================");
       } else {
@@ -57,6 +66,10 @@ class LoginControllertemp extends LoginController {
 
   @override
   void onInit() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      String? token = value;
+      print(value);
+    });
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();

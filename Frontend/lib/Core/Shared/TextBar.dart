@@ -5,13 +5,13 @@ class Textbar extends StatelessWidget {
   final String name;
  // Icon? icon;
   final String? Function(String?)? valid;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final bool? isshow;
   final void Function()? onTapicon;
   Textbar({
     super.key,
     required this.name,
-    required this.controller,
+    this.controller,
    // this.icon,
     required this.valid,
     this.isshow,

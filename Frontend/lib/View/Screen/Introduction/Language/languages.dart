@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_first_app/View/Screen/Home/homepage.dart';
+import 'package:my_first_app/View/Screen/Home/1/homepage.dart';
 import 'package:my_first_app/View/Widget/Intro/Language_Widgets/languages_widget.dart';
 
 class LanguagesPage extends StatelessWidget {

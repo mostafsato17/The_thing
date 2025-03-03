@@ -3,7 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:my_first_app/Core/Services/services.dart';
 
-class TransController extends GetxController {
+class TransController extends GetxController { 
   Locale? language;
   Services myservice = Get.find();
 
